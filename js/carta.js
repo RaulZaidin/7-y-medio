@@ -1,69 +1,49 @@
 class Carta {
 
     constructor(){
-        this.baraja = [];
-        let j = 1;
-        for(let i=0; i < 40; i++){
-            if(j <= 7){
-                this.baraja [i] = j;
-                
-            }else if(j <= 10 && j > 7){
-                this.baraja [i] = j + 2;
-                
-            }else if(j = 11){
-                j = 1;
-                this.baraja [i] = j;
-            }
-            j++;
-        }
-        this.palos = ["Oros", "Copas", "Espadas", "Bastos"];
         this.suma = [];
-        this.valorFinal = 0;
         this.cartasEscogidas = [];
+        this.palos = ["Oros", "Copas", "Espadas", "Bastos"];
+        const puntuacion = 0;
     }
 
-    random(){
-        return Math.floor(Math.random()*40);
-    }
-    randomPalo(){
-        return Math.floor(Math.random()*4);
-    }
+    // random(){
+    //     return Math.floor(Math.random()*40);
+    // }
+    // randomPalo(){
+    //     return Math.floor(Math.random()*4);
+    // }
     
-    reparteCarta(num, num2){
+    reparteCarta(num, num2, baraja, palos){
         let cart = document.getElementById("carta");
-        cart.innerHTML += " "+this.baraja[num] + " "+ this.palos[num2];
-        if(this.cartasEscogidas.indexOf(this.baraja[num] + this.palos[num2]) == -1){
-            this.cartasEscogidas.push(this.baraja[num] + this.palos[num2]);
-            return this.baraja[num];
+        if(this.cartasEscogidas.indexOf(baraja[num] + palos[num2]) == -1){
+            cart.innerHTML += " "+baraja[num] + " "+ palos[num2];
+            this.cartasEscogidas.push(baraja[num] + palos[num2]);
+            return baraja[num];
         }else{
-            this.reparteCarta(this.random, this.randomPalo);
+            // this.reparteCarta(this.random, this.randomPalo);
+            console.log("Carta repetida");
         }
         
     }
-    valorCartas(num){
-        let valor = document.getElementById("valor");
-        let resultado = 0;
-        if(num <= 7){
-            this.suma.push(num);
-            for(let i = 0; i < this.suma.length; i++){
-                resultado += this.suma[i];
-            }
-            valor.innerHTML = resultado;
-        }else{
-            this.suma.push(0.5);
-            for(let i = 0; i < this.suma.length; i++){
-                resultado += this.suma[i];
-            }
-            valor.innerHTML = resultado;
-        }
-        this.valorFinal = resultado;
-    }
+    // valorCartas(num){
+    //     let valor = document.getElementById("valor");
+    //     let resultado = 0;
+    //     if(num <= 7){
+    //         this.suma.push(num);
+    //         for(let i = 0; i < this.suma.length; i++){
+    //             resultado += this.suma[i];
+    //         }
+    //         valor.innerHTML = resultado;
+    //     }else{
+    //         this.suma.push(0.5);
+    //         for(let i = 0; i < this.suma.length; i++){
+    //             resultado += this.suma[i];
+    //         }
+    //         valor.innerHTML = resultado;
+    //     }
+    // }
 
-    valorLimite(){
-        if(this.valorFinal >= 8){
-            
-        }
-    }
     
 }
 
