@@ -1,10 +1,11 @@
 class Carta {
 
     constructor(){
-        this.suma = [];
-        this.cartasEscogidas = [];
-        this.palos = ["Oros", "Copas", "Espadas", "Bastos"];
-        const puntuacion = 0;
+        // this.suma = [];
+        // this.cartasEscogidas = [];
+        this.numero = [];
+        this.palo = ["Oros", "Copas", "Espadas", "Bastos"];
+        this.booleano = true;
     }
 
     // random(){

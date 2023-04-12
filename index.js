@@ -10,3 +10,22 @@ const boton = document.getElementById("boton");
 //     numeros.random(4), barajaFinal, baraja.palos));
 //     // cartas.valorLimite();
 // }
+let reglas = {
+    "elementos" : [
+        {
+            "numero" : 10,
+            "palo" : "todos",
+            "valor" : 0.5
+        },
+        {
+            "numero" : 11,
+            "palo" : "todos",
+            "valor" : 0.5
+        },
+        {
+            "numero" : 12,
+            "palo" : "todos",
+            "valor" : 0.5
+        }
+    ]
+}

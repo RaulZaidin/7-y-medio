@@ -1,3 +1,5 @@
+import {Carta} from "./carta.js";
+
 class Baraja{
 
     constructor(){
@@ -17,9 +19,32 @@ class Baraja{
         //     j++;
         // }
         
+        let j = 1;
+        let z = 0;
         for(let i = 0; i < 48; i++){
-            this.baraja[i]= i + 1;
+            var carta = new Carta();
+            if(j > 12){
+                j = 1;
+                z++;
+            }
+            carta.numero = j;
+            carta.palo = carta.palo[z];
+            this.baraja[i]= (carta);
+            j++;
         }
+        
+        let filtro = this.baraja.filter(carta => (carta.numero > 7 && carta.numero < 10));
+        
+        let filtro2 = this.baraja.filter(carta => {
+            for(let i = 0; i < filtro.length; i++){
+                if(carta == filtro[i]){
+                    carta.booleano = false;
+                }
+            }
+        });
+        
+        let filtro3 = this.baraja.filter(carta => carta.booleano == true);
+        console.log(filtro3);
         
     }
 }
