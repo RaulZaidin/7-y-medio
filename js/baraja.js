@@ -48,7 +48,7 @@ class Baraja{
         
     }
     reparteCarta(num){
-        return this.filtro3[num].numero + " " + this.filtro3[num].palo + " ";
+        return this.filtro3[num];
         
     }
 }

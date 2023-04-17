@@ -1,8 +1,10 @@
 import {Carta} from "./js/carta.js";
 import {Baraja} from "./js/baraja.js";
 import {Numeros} from "./js/numerosRandom.js";
+import {Juego} from "./js/juego.js";
 let baraja = new Baraja();
 let numeros = new Numeros();
+let juego = new Juego();
 const boton = document.getElementById("boton");
 // boton.onclick = function(){
 //     cartas.valorCartas(cartas.reparteCarta(numeros.random(40), 
@@ -10,8 +12,12 @@ const boton = document.getElementById("boton");
 //     // cartas.valorLimite();
 // }
 let carta = document.getElementById("carta");
+let valor = document.getElementById("valor");
 boton.onclick = function(){
-    carta.innerHTML += baraja.reparteCarta(numeros.random(40));
+    let elegida = baraja.reparteCarta(numeros.random(40));
+    carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
+    let valorC = juego.sieteYmedio(elegida.numero);
+    valor.innerHTML = valorC;
 }
 let reglas = {
     "elementos" : [
