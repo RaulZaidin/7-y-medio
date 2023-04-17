@@ -14,7 +14,11 @@ const boton = document.getElementById("boton");
 let carta = document.getElementById("carta");
 let valor = document.getElementById("valor");
 boton.onclick = function(){
-    let elegida = baraja.reparteCarta(numeros.random(40));
+    let elegida;
+    do{
+        elegida = baraja.reparteCarta(numeros.random(40));
+    }while(elegida.booleano == false);
+    elegida.booleano = false;
     carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
     let valorC = juego.sieteYmedio(elegida.numero);
     valor.innerHTML = valorC;

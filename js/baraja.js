@@ -1,4 +1,5 @@
 import {Carta} from "./carta.js";
+import {Numeros} from "./numerosRandom.js";
 
 class Baraja{
 
@@ -49,7 +50,6 @@ class Baraja{
     }
     reparteCarta(num){
         return this.filtro3[num];
-        
     }
 }
 
