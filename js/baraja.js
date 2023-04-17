@@ -1,5 +1,4 @@
 import {Carta} from "./carta.js";
-import {Numeros} from "./numerosRandom.js";
 
 class Baraja{
 
