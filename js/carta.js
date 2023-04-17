@@ -15,18 +15,6 @@ class Carta {
     //     return Math.floor(Math.random()*4);
     // }
     
-    reparteCarta(num, num2, baraja, palos){
-        let cart = document.getElementById("carta");
-        if(this.cartasEscogidas.indexOf(baraja[num] + palos[num2]) == -1){
-            cart.innerHTML += " "+baraja[num] + " "+ palos[num2];
-            this.cartasEscogidas.push(baraja[num] + palos[num2]);
-            return baraja[num];
-        }else{
-            // this.reparteCarta(this.random, this.randomPalo);
-            console.log("Carta repetida");
-        }
-        
-    }
     // valorCartas(num){
     //     let valor = document.getElementById("valor");
     //     let resultado = 0;

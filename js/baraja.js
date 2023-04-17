@@ -43,8 +43,12 @@ class Baraja{
             }
         });
         
-        let filtro3 = this.baraja.filter(carta => carta.booleano == true);
-        console.log(filtro3);
+        this.filtro3 = this.baraja.filter(carta => carta.booleano == true);
+        console.log(this.filtro3);
+        
+    }
+    reparteCarta(num){
+        return this.filtro3[num].numero + " " + this.filtro3[num].palo + " ";
         
     }
 }

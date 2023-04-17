@@ -1,7 +1,6 @@
 import {Carta} from "./js/carta.js";
 import {Baraja} from "./js/baraja.js";
 import {Numeros} from "./js/numerosRandom.js";
-let cartas = new Carta();
 let baraja = new Baraja();
 let numeros = new Numeros();
 const boton = document.getElementById("boton");
@@ -10,6 +9,10 @@ const boton = document.getElementById("boton");
 //     numeros.random(4), barajaFinal, baraja.palos));
 //     // cartas.valorLimite();
 // }
+let carta = document.getElementById("carta");
+boton.onclick = function(){
+    carta.innerHTML += baraja.reparteCarta(numeros.random(40));
+}
 let reglas = {
     "elementos" : [
         {
