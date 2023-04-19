@@ -4,19 +4,51 @@ import {Juego} from "./js/juego.js";
 let baraja = new Baraja();
 let numeros = new Numeros();
 let juego = new Juego();
-const boton = document.getElementById("boton");
+const botonCarta = document.getElementById("botonCarta");
+const botonReset = document.getElementById("botonReset");
 
 let carta = document.getElementById("carta");
-let valor = document.getElementById("valor");
-boton.onclick = function(){
+let puntuacionCartas = document.getElementById("puntuacionCartas");
+let mensajeEstado = document.getElementById("mensajeEstado");
+let ganadas = document.getElementById("ganadas");
+let perdidas = document.getElementById("perdidas");
+let totalPerdidas = 0;
+let totalGanadas = 0;
+botonCarta.onclick = function(){
     let elegida;
     do{
         elegida = baraja.reparteCarta(numeros.random(40));
-    }while(elegida.booleano == false);
-    elegida.booleano = false;
+    }while(elegida.valida == false);
+    elegida.valida = false;
     carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
     let valorC = juego.sieteYmedio(elegida.numero);
-    valor.innerHTML = valorC;
+    if(valorC > 7.5){
+        puntuacionCartas.innerHTML = valorC;
+        mensajeEstado.innerHTML = "Has perdido";
+        botonCarta.disabled = true;
+        totalPerdidas++;
+        perdidas.innerHTML = totalPerdidas;
+    }else if(valorC == 7.5){
+        puntuacionCartas.innerHTML = valorC;
+        mensajeEstado.innerHTML = "Has ganado";
+        botonCarta.disabled = true;
+        totalGanadas++;
+        ganadas.innerHTML = totalGanadas;
+    }else{
+        puntuacionCartas.innerHTML = valorC;
+    }
+    
+}
+
+botonReset.onclick = function(){
+    baraja = new Baraja();
+    botonCarta.disabled = false;
+    mensajeEstado.innerHTML = " ";
+    puntuacionCartas.innerHTML = " ";
+    juego.suma = [];
+
+    carta.innerHTML = " ";
+
 }
 let reglas = {
     "elementos" : [

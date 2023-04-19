@@ -1,9 +1,9 @@
 class Carta {
 
-    constructor(){
-        this.numero = [];
-        this.palo = ["Oros", "Copas", "Espadas", "Bastos"];
-        this.booleano = true;
+    constructor(numero, palo){
+        this.numero = numero;
+        this.palo = palo;
+        this.valida = true;
     }
 
 }
