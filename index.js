@@ -1,8 +1,6 @@
 import {Baraja} from "./js/baraja.js";
-import {Numeros} from "./js/numerosRandom.js";
 import {Juego} from "./js/juego.js";
 let baraja = new Baraja();
-let numeros = new Numeros();
 let juego = new Juego();
 const botonCarta = document.getElementById("botonCarta");
 const botonReset = document.getElementById("botonReset");
@@ -16,10 +14,9 @@ let totalPerdidas = 0;
 let totalGanadas = 0;
 botonCarta.onclick = function(){
     let elegida;
-    do{
-        elegida = baraja.reparteCarta(numeros.random(40));
-    }while(elegida.valida == false);
-    elegida.valida = false;
+    elegida = baraja.reparteCarta();
+    let filtro = baraja.filtro3.filter(carta => carta != elegida);
+    // console.log(filtro);
     carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
     let valorC = juego.sieteYmedio(elegida.numero);
     if(valorC > 7.5){

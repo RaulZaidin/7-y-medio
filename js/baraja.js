@@ -31,7 +31,8 @@ class Baraja{
         this.filtro3 = this.baraja.filter(carta => carta.valida == true);
         
     }
-    reparteCarta(num){
+    reparteCarta(){
+        let num = Math.floor(Math.random()*40);
         return this.filtro3[num];
     }
 }
