@@ -15,8 +15,6 @@ let totalGanadas = 0;
 botonCarta.onclick = function(){
     let elegida;
     elegida = baraja.reparteCarta();
-    let filtro = baraja.filtro3.filter(carta => carta != elegida);
-    // console.log(filtro);
     carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
     let valorC = juego.sieteYmedio(elegida.numero);
     if(valorC > 7.5){

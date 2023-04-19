@@ -28,12 +28,13 @@ class Baraja{
             }
         });
         
-        this.filtro3 = this.baraja.filter(carta => carta.valida == true);
+        this.barajaFinal = this.baraja.filter(carta => carta.valida == true);
         
     }
     reparteCarta(){
-        let num = Math.floor(Math.random()*40);
-        return this.filtro3[num];
+        let num = Math.floor(Math.random()*(this.barajaFinal.length - 1));
+        this.barajaFinal = this.barajaFinal.filter(carta => carta != this.barajaFinal[num]);
+        return this.barajaFinal[num];
     }
 }
 
