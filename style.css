@@ -2,6 +2,29 @@ html, body{
     height: 100%;
 
 }
-body h3{
+body{
+    background-image: url("img/bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    overflow: hidden;
+}
+body h2{
     display: inline-block;
+    
+}
+.containerBotones{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.containerBotones button{
+    width: 100px;
+    height: 60px;
+    margin: 20px;
+}
+.titulos{
+    color: rgb(218, 63, 63);
 }

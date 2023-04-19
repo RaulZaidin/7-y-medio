@@ -33,8 +33,10 @@ class Baraja{
     }
     reparteCarta(){
         let num = Math.floor(Math.random()*(this.barajaFinal.length - 1));
-        this.barajaFinal = this.barajaFinal.filter(carta => carta != this.barajaFinal[num]);console.log(this.barajaFinal);
-        return this.barajaFinal[num];
+        let carta = this.barajaFinal[num];
+        this.barajaFinal = this.barajaFinal.filter(carta => carta != this.barajaFinal[num]);
+        console.log(this.barajaFinal);
+        return carta;
     }
 }
 
