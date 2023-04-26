@@ -2,40 +2,32 @@ import {Carta} from "./carta.js";
 
 class Baraja{
 
-    constructor(){
-        this.baraja = [];
+    constructor(reglas){
+        let barajaInicial = [];
         this.palo = ["Oros", "Copas", "Espadas", "Bastos"];
         
-        let j = 1;
-        let z = 0;
-        for(let i = 0; i < 48; i++){
-            if(j > 12){
-                j = 1;
-                z++;
-            }
-            var carta = new Carta(j, this.palo[z]);
-            this.baraja[i]= (carta);
-            j++;
-        }
-        
-        let filtro = this.baraja.filter(carta => (carta.numero > 7 && carta.numero < 10));
-        
-        let filtro2 = this.baraja.filter(carta => {
-            for(let i = 0; i < filtro.length; i++){
-                if(carta == filtro[i]){
-                    carta.valida = false;
-                }
+        this.palo.forEach(element => {
+            for(let i = 1; i <= 12; i++){
+                barajaInicial.push(new Carta(i, element));
             }
         });
         
-        this.barajaFinal = this.baraja.filter(carta => carta.valida == true);
+        let filtro = barajaInicial.filter(carta => {
+            reglas.descartes.forEach(element => {
+                if(carta.numero == element.numero){
+                    carta.valida = false;
+                }
+            })
+        });
+        
+        this.baraja = barajaInicial.filter(carta => carta.valida == true);
         
     }
     reparteCarta(){
-        let num = Math.floor(Math.random()*(this.barajaFinal.length - 1));
-        let carta = this.barajaFinal[num];
-        this.barajaFinal = this.barajaFinal.filter(carta => carta != this.barajaFinal[num]);
-        console.log(this.barajaFinal);
+        let num = Math.floor(Math.random()*(this.baraja.length - 1));
+        let carta = this.baraja[num];
+        this.baraja = this.baraja.filter(carta => carta != this.baraja[num]);
+        console.log(this.baraja);
         return carta;
     }
 }

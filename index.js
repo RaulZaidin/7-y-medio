@@ -1,7 +1,35 @@
 import {Baraja} from "./js/baraja.js";
 import {Juego} from "./js/juego.js";
-let baraja = new Baraja();
-let juego = new Juego();
+let reglas = {
+    valores : [
+        {
+            numero : 10,
+            palo : "todos",
+            valor : 0.5
+        },
+        {
+            numero : 11,
+            palo : "todos",
+            valor : 0.5
+        },
+        {
+            numero : 12,
+            palo : "todos",
+            valor : 0.5
+        }
+    ],
+    descartes : [
+        {
+            numero : 8,
+            palo : "todos"
+        },
+        {
+            numero : 9,
+            palo: "todos"
+        }
+    ]
+}
+let juego = new Juego(reglas);
 const botonCarta = document.getElementById("botonCarta");
 const botonReset = document.getElementById("botonReset");
 
@@ -14,9 +42,9 @@ let totalPerdidas = 0;
 let totalGanadas = 0;
 botonCarta.onclick = function(){
     let elegida;
-    elegida = baraja.reparteCarta();
+    elegida = juego.baraja.reparteCarta();
     carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
-    let valorC = juego.sieteYmedio(elegida.numero);
+    let valorC = juego.sieteYmedio(elegida);
     if(valorC > 7.5){
         puntuacionCartas.innerHTML = valorC;
         mensajeEstado.innerHTML = "Has perdido";
@@ -36,31 +64,11 @@ botonCarta.onclick = function(){
 }
 
 botonReset.onclick = function(){
-    baraja = new Baraja();
+    juego = new Juego(reglas);
     botonCarta.disabled = false;
     mensajeEstado.innerHTML = " ";
     puntuacionCartas.innerHTML = " ";
-    juego.suma = [];
 
     carta.innerHTML = " ";
 
-}
-let reglas = {
-    "elementos" : [
-        {
-            "numero" : 10,
-            "palo" : "todos",
-            "valor" : 0.5
-        },
-        {
-            "numero" : 11,
-            "palo" : "todos",
-            "valor" : 0.5
-        },
-        {
-            "numero" : 12,
-            "palo" : "todos",
-            "valor" : 0.5
-        }
-    ]
 }
