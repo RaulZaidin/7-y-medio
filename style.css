@@ -28,3 +28,16 @@ body h2{
 .titulos{
     color: rgb(218, 63, 63);
 }
+.BotonesEleccion{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.BotonesEleccion button{
+    width: 200px;
+    height: 120px;
+    margin: 20px;
+    font-size: 2rem;
+}

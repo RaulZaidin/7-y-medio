@@ -3,6 +3,7 @@ import {Baraja} from "./baraja.js";
 class Juego{
     constructor(reglas){
         this.sistema = null;
+        this.contador = 0;
         this.suma = [];
         this.baraja = new Baraja(reglas);
         reglas.valores.forEach(element => {
@@ -16,7 +17,7 @@ class Juego{
                 }
             });
         });
-        
+        this.reglas = reglas;
         console.log(this.baraja.baraja);
     }
     sieteYmedio(carta){
@@ -26,6 +27,18 @@ class Juego{
             resultado += puntuacion;
         });    
         return resultado;
+    }
+    burro(){
+        this.contador++;
+        if(this.contador == 13){
+            this.contador = 1;
+        }
+        this.reglas.descartes.forEach(element => {
+            if(this.contador == element.numero){
+                this.contador++;
+            }
+        })
+        return this.contador;
     }
 }
 
