@@ -49,7 +49,7 @@ titulo2.style.display = 'none';
 titulo3.style.display = 'none';
 titulo4.style.display = 'none';
 titulo5.style.display = 'none';
-
+// juego.sistema = 2; //problema de que no obtiene un valor de sistema
 boton7ymedio.onclick = function(){
     juego.sistema = 1; //Para diferenciar el tipo de juego los divido en 1 para 7ymedio y 2 para el burro
     botonCarta.style.display = 'block';
@@ -81,8 +81,10 @@ let ganadas = document.getElementById("ganadas");
 let perdidas = document.getElementById("perdidas");
 let totalPerdidas = 0;
 let totalGanadas = 0;
-if(juego.sistema == 1){
-    botonCarta.onclick = function(){
+
+
+botonCarta.onclick = function(){
+    if(juego.sistema == 1){
         let elegida;
         elegida = juego.baraja.reparteCarta();
         carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
@@ -102,10 +104,7 @@ if(juego.sistema == 1){
         }else{
             puntuacionCartas.innerHTML = valorC;
         }
-        
-    }
-}else{
-    botonCarta.onclick = function(){
+    }else{
         let elegida;
         elegida = juego.baraja.reparteCarta();
         carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
@@ -120,11 +119,16 @@ if(juego.sistema == 1){
             contadorCartas.innerHTML = cartaContador;
         }
     }
+    
 }
-
-
 botonReset.onclick = function(){
-    juego = new Juego(reglas);
+    if(juego.sistema == 1){
+        juego = new Juego(reglas);
+        juego.sistema = 1;
+    }else{
+        juego = new Juego(reglas);
+        juego.sistema = 2;
+    }
     botonCarta.disabled = false;
     mensajeEstado.innerHTML = " ";
     puntuacionCartas.innerHTML = " ";
