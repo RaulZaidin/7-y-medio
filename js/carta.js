@@ -9,5 +9,5 @@ class Carta {
 
 }
 
-
-export {Carta}
+module.exports = Carta;
+// export {Carta}

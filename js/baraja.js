@@ -1,4 +1,5 @@
-import {Carta} from "./carta.js";
+// import {Carta} from "./carta.js";
+const Carta = require('./carta');
 
 class Baraja{
 
@@ -33,4 +34,4 @@ class Baraja{
 }
 
 module.exports = Baraja;
-export {Baraja}
+// export {Baraja}
