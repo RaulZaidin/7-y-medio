@@ -32,4 +32,5 @@ class Baraja{
     }
 }
 
+module.exports = Baraja;
 export {Baraja}
