@@ -1,5 +1,5 @@
-import {Baraja} from "./js/baraja.js";
 import {Juego} from "./js/juego.js";
+
 let reglas = {
     valores : [
         {

@@ -1,24 +1,24 @@
-import {Baraja} from "./baraja.js";
+import {Cliente} from "./cliente.js";
+// const Cliente = require('./cliente');
 
 class Juego{
     constructor(reglas){
         this.sistema = null;
         this.contador = 0;
         this.suma = [];
-        this.baraja = new Baraja(reglas);
-        reglas.valores.forEach(element => {
-            this.baraja.baraja.forEach(carta =>{
-                if(carta.numero == element.numero){
-                    carta.valor = element.valor;
-                }else{
-                    if(carta.valor == null){
-                        carta.valor = carta.numero;
-                    }
-                }
-            });
-        });
+        const cliente = new Cliente();
+        // reglas.valores.forEach(element => {
+        //     this.baraja.baraja.forEach(carta =>{
+        //         if(carta.numero == element.numero){
+        //             carta.valor = element.valor;
+        //         }else{
+        //             if(carta.valor == null){
+        //                 carta.valor = carta.numero;
+        //             }
+        //         }
+        //     });
+        // });
         this.reglas = reglas;
-        console.log(this.baraja.baraja);
     }
     sieteYmedio(carta){
         let resultado = 0; 
@@ -42,4 +42,4 @@ class Juego{
     }
 }
 
-export {Juego}
+export {Juego};

@@ -28,7 +28,7 @@ class Baraja{
         let num = Math.floor(Math.random()*(this.baraja.length - 1));
         let carta = this.baraja[num];
         this.baraja = this.baraja.filter(carta => carta != this.baraja[num]);
-        console.log(this.baraja);
+        // console.log(this.baraja);
         return carta;
     }
 }
