@@ -1,3 +1,6 @@
+import {Juego} from "./juego.js";
+const express = require('express');
+const app = require('./server');
 class Cliente{
     constructor(){
         let reglas = {
@@ -29,6 +32,7 @@ class Cliente{
                 }
             ]
         }
+        this.juego = new Juego(reglas);
         
         var apiUrl="http://localhost:3001" ;
         
@@ -41,6 +45,11 @@ class Cliente{
             })
             .then((response) => response)
             .then((json) => console.log(json));
+    }
+    reparteCarta(){
+        app.get('/carta', (req, res)=>{
+            res.send(console.log("hola"));
+        })
     }
 }
 

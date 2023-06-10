@@ -10,6 +10,7 @@ const Baraja = require('./baraja');
 
 // defining the Express app
 const app = express();
+module.exports = app
 
 // adding Helmet to enhance your API's security
 app.use(helmet());
@@ -25,13 +26,10 @@ app.use(morgan('combined'));
 
 
 // defining an endpoint to return all ads
+
 // app.get('/carta', (req, res) => {
 //   res.send(baraja.reparteCarta());
 // });
-app.get('/carta', (req, res) => {
-  // res.send(baraja.reparteCarta());
-  console.log("hola");
-});
 
 app.post('/', (req, res) =>{
   const baraja = new Baraja(req.body);
@@ -46,7 +44,7 @@ app.post('/', (req, res) =>{
         }
     });
 });
-  console.log(baraja.reparteCarta());
+
   // res.send("adios");
 })
 // starting the server

@@ -1,4 +1,3 @@
-import {Cliente} from "./cliente.js";
 // const Cliente = require('./cliente');
 
 class Juego{
@@ -6,7 +5,6 @@ class Juego{
         this.sistema = null;
         this.contador = 0;
         this.suma = [];
-        const cliente = new Cliente();
         // reglas.valores.forEach(element => {
         //     this.baraja.baraja.forEach(carta =>{
         //         if(carta.numero == element.numero){

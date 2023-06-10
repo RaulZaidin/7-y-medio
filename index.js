@@ -1,4 +1,4 @@
-import {Juego} from "./js/juego.js";
+import {Cliente} from "./js/cliente.js";
 
 let reglas = {
     valores : [
@@ -29,7 +29,7 @@ let reglas = {
         }
     ]
 }
-let juego = new Juego(reglas);
+
 const botonCarta = document.getElementById("botonCarta");
 const botonReset = document.getElementById("botonReset");
 
@@ -49,9 +49,10 @@ titulo2.style.display = 'none';
 titulo3.style.display = 'none';
 titulo4.style.display = 'none';
 titulo5.style.display = 'none';
-// juego.sistema = 2; //problema de que no obtiene un valor de sistema
+
+var cliente = new Cliente();
 boton7ymedio.onclick = function(){
-    juego.sistema = 1; //Para diferenciar el tipo de juego los divido en 1 para 7ymedio y 2 para el burro
+    cliente.juego.sistema = 1; //Para diferenciar el tipo de juego los divido en 1 para 7ymedio y 2 para el burro
     botonCarta.style.display = 'block';
     botonReset.style.display = 'block';
     boton7ymedio.style.display = 'none';
@@ -62,7 +63,7 @@ boton7ymedio.onclick = function(){
     titulo4.style.display = 'inline-block';
 }
 botonBurro.onclick = function(){
-    juego.sistema = 2; 
+    cliente.juego.sistema = 2; 
     botonCarta.style.display = 'block';
     botonReset.style.display = 'block';
     boton7ymedio.style.display = 'none';
@@ -84,9 +85,10 @@ let totalGanadas = 0;
 
 
 botonCarta.onclick = function(){
-    if(juego.sistema == 1){
+    if(cliente.juego.sistema == 1){
         let elegida;
-        elegida = juego.baraja.reparteCarta();
+        elegida = cliente.reparteCarta();
+        console.log(elegida);
         carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
         let valorC = juego.sieteYmedio(elegida);
         if(valorC > 7.5){
@@ -106,7 +108,7 @@ botonCarta.onclick = function(){
         }
     }else{
         let elegida;
-        elegida = juego.baraja.reparteCarta();
+        elegida = cliente.reparteCarta();
         carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
         let cartaContador = juego.burro();
         if(elegida.numero == cartaContador){
@@ -122,7 +124,7 @@ botonCarta.onclick = function(){
     
 }
 botonReset.onclick = function(){
-    if(juego.sistema == 1){
+    if(cliente.juego.sistema == 1){
         juego = new Juego(reglas);
         juego.sistema = 1;
     }else{
