@@ -84,13 +84,13 @@ let totalPerdidas = 0;
 let totalGanadas = 0;
 
 
-botonCarta.onclick = function(){
+botonCarta.onclick = async function(){
     if(cliente.juego.sistema == 1){
         let elegida;
-        elegida = cliente.reparteCarta();
+        elegida = await cliente.reparteCarta();
         console.log(elegida);
         carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
-        let valorC = juego.sieteYmedio(elegida);
+        let valorC = cliente.juego.sieteYmedio(elegida);
         if(valorC > 7.5){
             puntuacionCartas.innerHTML = valorC;
             mensajeEstado.innerHTML = "Has perdido";
@@ -108,9 +108,9 @@ botonCarta.onclick = function(){
         }
     }else{
         let elegida;
-        elegida = cliente.reparteCarta();
+        elegida = await cliente.reparteCarta();
         carta.innerHTML += elegida.numero + " " + elegida.palo + " ";
-        let cartaContador = juego.burro();
+        let cartaContador = cliente.juego.burro();
         if(elegida.numero == cartaContador){
             contadorCartas.innerHTML = cartaContador;
             mensajeEstado.innerHTML = "Has perdido";
@@ -125,11 +125,11 @@ botonCarta.onclick = function(){
 }
 botonReset.onclick = function(){
     if(cliente.juego.sistema == 1){
-        juego = new Juego(reglas);
-        juego.sistema = 1;
+        cliente = new Cliente();
+        cliente.juego.sistema = 1;
     }else{
-        juego = new Juego(reglas);
-        juego.sistema = 2;
+        cliente = new Cliente();
+        cliente.juego.sistema = 2;
     }
     botonCarta.disabled = false;
     mensajeEstado.innerHTML = " ";

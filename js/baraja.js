@@ -29,7 +29,11 @@ class Baraja{
         let carta = this.baraja[num];
         this.baraja = this.baraja.filter(carta => carta != this.baraja[num]);
         // console.log(this.baraja);
-        return carta;
+        return {
+            numero: carta.numero,
+            palo: carta.palo,
+            valor: carta.valor
+        };
     }
 }
 
